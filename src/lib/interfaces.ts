@@ -5,31 +5,33 @@ export interface Embed {
 	/**
 	 * Embed title.
 	 */
-	title: string;
+	title: any;
 	/**
 	 * Embed description.
 	 */
-	description: string;
+	description: any;
+	content: any;
+	autodelete: any;
 	/**
 	 * Embed URL.
 	 */
-	url: string;
+	url: any;
 	/**
 	 * Embed timestamp in epoch time.
 	 */
-	timestamp?: number;
+	timestamp?: boolean;
 	/**
 	 * Embed color.
 	 */
-	color?: string;
+	color?: any;
 	/**
 	 * Embed image URL.
 	 */
-	image: string;
+	image: any;
 	/**
 	 * Embed thumbnail URL.
 	 */
-	thumbnail: string;
+	thumbnail: any;
 	/**
 	 * Embed footer object.
 	 */
@@ -42,43 +44,49 @@ export interface Embed {
 	 * Embed fields array.
 	 */
 	fields: EmbedField[];
+	buttons: Buttons[];
+}
+
+export interface Buttons {
+	label?: any;
+	url?: any;
 }
 
 export interface EmbedFooter {
 	/**
 	 * Embed footer text.
 	 */
-	text: string;
+	text: any;
 	/**
 	 * Embed footer icon URL.
 	 */
-	iconUrl: string;
+	iconUrl: any;
 }
 
 export interface EmbedAuthor {
 	/**
 	 * Embed author name.
 	 */
-	name: string;
+	name: any;
 	/**
 	 * Embed author URL.
 	 */
-	url: string;
+	url: any;
 	/**
 	 * Embed author icon URL.
 	 */
-	iconUrl: string;
+	iconUrl: any;
 }
 
 export interface EmbedField {
 	/**
 	 * Embed field name.
 	 */
-	name: string;
+	name: any;
 	/**
 	 * Embed field value.
 	 */
-	value: string;
+	value: any;
 	/**
 	 * Embed field inline flag.
 	 */

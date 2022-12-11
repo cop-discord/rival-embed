@@ -6,7 +6,7 @@ import DiscordEmbed from "../components/DiscordEmbed";
 import LimitedInput from "../components/LimitedInput";
 import Output from "../components/Output";
 import ValueInput from "../components/ValueInput";
-import { Embed, EmbedField } from "../lib/interfaces";
+import { Buttons, Embed, EmbedField } from "../lib/interfaces";
 import { embedToPartial } from "../lib/utils";
 
 function ellipses(str: string, max = 50) {
@@ -95,7 +95,8 @@ export default function Home() {
 	const [authorIcon, setAuthorIcon] = useState("");
 	const [authorName, setAuthorName] = useState("");
 	const [authorUrl, setAuthorUrl] = useState("");
-
+	const [content, setContent] = useState("");
+	const [autodelete, setAutoDelete] = useState("");
 	const [title, setTitle] = useState("");
 	const [url, setUrl] = useState("");
 	const [description, setDescription] = useState("");
@@ -103,6 +104,7 @@ export default function Home() {
 	const [colorEnabled, setColorEnabled] = useState(true);
 
 	const [fields, setFields] = useState<EmbedField[]>([]);
+	const [buttons, setButtons] = useState<Buttons[]>([]);
 
 	const [image, setImage] = useState("");
 	const [thumbnail, setThumbnail] = useState("");
@@ -252,6 +254,9 @@ export default function Home() {
 								setAuthorUrl("");
 								setTitle("");
 								setUrl("");
+								setButtons([]);
+								setContent("");
+								setAutoDelete("");
 								setDescription("");
 								setFields([]);
 								setImage("");
@@ -297,7 +302,26 @@ export default function Home() {
 						{error}
 					</div>
 				) : null}
-
+				<details open>
+					<summary>
+						<h2>
+							Content
+							{content ? (
+								<> &ndash; {ellipses(content)}</>
+							) : null}
+						</h2>
+					</summary>
+				</details>
+				<details open>
+					<summary>
+						<h2>
+							AutoDelete
+							{autodelete ? (
+								<> &ndash; {ellipses(autodelete)}</>
+							) : null}
+						</h2>
+					</summary>
+				</details>
 				<details open>
 					<summary>
 						<h2>
@@ -499,6 +523,122 @@ export default function Home() {
 						)}`}
 					>
 						Add Field
+					</button>
+				</details>
+				<details open className="buttons">
+					<summary>
+						<h2>Buttons &ndash; {buttons.length}</h2>
+					</summary>
+					{buttons.map((button, index) => (
+						<details key={index}>
+							<summary>
+								<h3 className="text-white font-semibold mr-auto">
+									Button {index + 1} &ndash;{" "}
+									{ellipses(buttons.name)}
+								</h3>
+								<button
+									onClick={() => {
+										if (index === 0) return;
+										const newButtons = [...buttons];
+										[
+											newButtons[index - 1],
+											newButtons[index]
+										] = [
+											newButtons[index],
+											newButtons[index - 1]
+										];
+										setButtons(newButtons);
+									}}
+									className={button(
+										index === 0 ? "disabled" : "blue"
+									)}
+								>
+									Move Up
+								</button>
+								<button
+									onClick={() => {
+										if (index === buttons.length - 1) return;
+										const newButtons = [...buttons];
+										[
+											newButtons[index + 1],
+											newButtons[index]
+										] = [
+											newButtons[index],
+											newButtons[index + 1]
+										];
+										setButtons(newButtons);
+									}}
+									className={button(
+										index === buttons.length - 1
+											? "disabled"
+											: "blue"
+									)}
+								>
+									Move Down
+								</button>
+								<button
+									onClick={() => {
+										setButtons(
+											buttons.filter((_, i) => i !== index)
+										);
+									}}
+									className={button("red")}
+								>
+									Delete
+								</button>
+							</summary>
+							<div>
+								<label htmlFor={`button-label-${index}`}>
+									Name
+								</label>
+								<LimitedInput
+									limit={256}
+									required={true}
+									type="text"
+									id={`button-label-${index}`}
+									value={button.name}
+									onChange={e => {
+										const newButtons = [...buttons];
+										newButtons[index].name = e.target.value;
+										setButtons(newButtons);
+									}}
+								/>
+							</div>
+							<div>
+								<label htmlFor={`button-label-${index}`}>
+									Value
+								</label>
+								<LimitedInput
+									limit={1024}
+									required={true}
+									textarea={true}
+									id={`button-label-${index}`}
+									value={button.value}
+									onChange={e => {
+										const newButtons = [...buttons];
+										newButtons[index].value = e.target.value;
+										setButtons(newButtons);
+									}}
+								/>
+						</details>
+					))}
+					<button
+						type="button"
+						onClick={() => {
+							if (buttons.length < 25)
+								setButtons([
+									...buttons,
+									{
+										label: "A New Button",
+										url: ""
+									}
+								]);
+						}}
+						className={`mt-4 ${button(
+							buttons.length < 25 ? "blue" : "disabled"
+						)}`}
+					>
+						Add Button
 					</button>
 				</details>
 				<details open>

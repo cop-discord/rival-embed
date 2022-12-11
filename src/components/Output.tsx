@@ -32,30 +32,30 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			if (embed.author.name)
-				substeps.push(s`author: ${embed.author.name} &&`);
+				substeps.push(`author: ${embed.author.name} &&`);
 			if (embed.author.url)
-				substeps.push(s` url: ${embed.author.url} &&`);
+				substeps.push(` url: ${embed.author.url} &&`);
 			if (embed.author.iconUrl)
-				substeps.push(s` icon: ${embed.author.iconUrl} `);
+				substeps.push(` icon: ${embed.author.iconUrl} `);
 			substeps.push(``);
 
 			steps.push(`{${substeps}}$v`);
 		}
 
-		if (embed.title) steps.push(s`{title: ${embed.title}}$v`);
+		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
 
-		if (embed.url) steps.push(s`{url: ${embed.url}}$v`);
+		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
 
 		if (embed.description)
-			steps.push(s`{description: ${embed.description}}$v`);
+			steps.push(`{description: ${embed.description}}$v`);
 
 		if (embed.fields.length > 0) {
 			const substeps = [""];
 
 			for (const field of embed.fields) {
 				substeps.push(`{`);
-				substeps.push(s`field: ${field.name} &&`);
-				substeps.push(s` value: ${field.value}`);
+				substeps.push(`field: ${field.name} &&`);
+				substeps.push(` value: ${field.value}`);
 				if (field.inline) substeps.push(` && inline: true`);
 				substeps.push(`}$v`);
 			}
@@ -63,11 +63,24 @@ export default function Output({ embed }: { embed: Embed }) {
 
 			steps.push(substeps);
 		}
+		if (embed.buttons.length > 0) {
+			const substeps = [""];
 
-		if (embed.image) steps.push(s`{image: ${embed.image}}$v`);
+			for (const button of embed.buttons) {
+				substeps.push(`{`);
+				substeps.push(`label: ${button.label} &&`);
+				substeps.push(` link: ${button.url}`);
+				substeps.push(`}$v`);
+			}
+			substeps.push(``);
+
+			steps.push(substeps);
+		}
+
+		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
 
 		if (embed.thumbnail)
-			steps.push(s`{thumbnail: ${embed.thumbnail}}$v`);
+			steps.push(`{thumbnail: ${embed.thumbnail}}$v`);
 
 		if (embed.color) steps.push(s`{color: ${embed.color}}$v`);
 
