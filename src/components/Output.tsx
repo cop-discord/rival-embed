@@ -37,12 +37,15 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(` url: ${embed.author.url} &&`);
 			if (embed.author.iconUrl)
 				substeps.push(` icon: ${embed.author.iconUrl} `);
-			substeps.push(``);
 
 			steps.push(`{${substeps}}$v`);
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
+
+		if (embed.content) steps.push(`{content: ${embed.content}}$v`);
+
+		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}`)
 
 		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
 
@@ -59,9 +62,8 @@ export default function Output({ embed }: { embed: Embed }) {
 				if (field.inline) substeps.push(` && inline: true`);
 				substeps.push(`}$v`);
 			}
-			substeps.push(``);
 
-			steps.push(substeps);
+			steps.push(`${substeps}`);
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
@@ -72,9 +74,8 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(` link: ${button.url}`);
 				substeps.push(`}$v`);
 			}
-			substeps.push(``);
 
-			steps.push(substeps);
+			steps.push(`${substeps}`);
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -93,7 +94,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
 
-			steps.push(substeps);
+			steps.push(`${substeps}`);
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);

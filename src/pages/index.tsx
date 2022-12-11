@@ -88,7 +88,15 @@ __Underline__`,
 		text: "Example Footer",
 		iconUrl: "https://rival.rocks/instagram.png"
 	},
-	timestamp: Date.now()
+	timestamp: true,
+	content: "Content",
+	autodelete: 5,
+	buttons: [
+		{
+			label: "Label",
+			url: "Link",
+		}
+	]
 };
 
 export default function Home() {
@@ -181,12 +189,14 @@ export default function Home() {
 		setAuthorIcon(embed.author?.iconUrl ?? "");
 		setAuthorName(embed.author?.name ?? "");
 		setAuthorUrl(embed.author?.url ?? "");
-
+		setContent(embed.content ?? "");
+		setAutoDelete(embed.autodelete ?? "");
 		setTitle(embed.title ?? "");
 		setUrl(embed.url ?? "");
 		setDescription(embed.description ?? "");
 
 		setFields(embed.fields ?? []);
+		setButtons(embed.buttons ?? []);
 
 		setImage(embed.image ?? "");
 		setThumbnail(embed.thumbnail ?? "");
@@ -197,7 +207,7 @@ export default function Home() {
 		setFooterText(embed.footer?.text ?? "");
 		setFooterIcon(embed.footer?.iconUrl ?? "");
 
-		setTimestamp(embed.timestamp);
+		setTimestamp(embed.timestamp ?? false);
 
 		setEmbedLoaded(true);
 	}
@@ -223,7 +233,13 @@ export default function Home() {
 			text: footerText.trim(),
 			iconUrl: footerIcon.trim()
 		},
-		timestamp
+		timestamp,
+		content: content.trim(),
+		autodelete: autodelete.trim(),
+		buttons: buttons.map(butto => ({
+			label: butto.label.trim(),
+			url: butto.url.trim()
+		}))
 	};
 
 	return (
@@ -529,12 +545,12 @@ export default function Home() {
 					<summary>
 						<h2>Buttons &ndash; {buttons.length}</h2>
 					</summary>
-					{buttons.map((button, index) => (
+					{buttons.map((butto, index) => (
 						<details key={index}>
 							<summary>
 								<h3 className="text-white font-semibold mr-auto">
 									Button {index + 1} &ndash;{" "}
-									{ellipses(buttons.name)}
+									{ellipses(butto.label)}
 								</h3>
 								<button
 									onClick={() => {
@@ -596,10 +612,10 @@ export default function Home() {
 									required={true}
 									type="text"
 									id={`button-label-${index}`}
-									value={button.name}
+									value={butto.label}
 									onChange={e => {
 										const newButtons = [...buttons];
-										newButtons[index].name = e.target.value;
+										newButtons[index].label = e.target.value;
 										setButtons(newButtons);
 									}}
 								/>
@@ -613,13 +629,14 @@ export default function Home() {
 									required={true}
 									textarea={true}
 									id={`button-label-${index}`}
-									value={button.value}
+									value={butto.url}
 									onChange={e => {
 										const newButtons = [...buttons];
-										newButtons[index].value = e.target.value;
+										newButtons[index].url = e.target.value;
 										setButtons(newButtons);
 									}}
 								/>
+							</div>
 						</details>
 					))}
 					<button

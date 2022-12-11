@@ -19,7 +19,7 @@ export interface Embed {
 	/**
 	 * Embed timestamp in epoch time.
 	 */
-	timestamp?: boolean;
+	timestamp?: any;
 	/**
 	 * Embed color.
 	 */
