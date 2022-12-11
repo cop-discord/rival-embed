@@ -32,11 +32,11 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			if (embed.author.name)
-				substeps.push(`author: ${embed.author.name} && `);
+				substeps.push(`author: ${embed.author.name} `);
 			if (embed.author.url)
-				substeps.push(`url: ${embed.author.url} && `);
+				substeps.push(`&& url: ${embed.author.url} `);
 			if (embed.author.iconUrl)
-				substeps.push(` icon: ${embed.author.iconUrl} `);
+				substeps.push(`&& icon: ${embed.author.iconUrl}`);
 
 			steps.push(`{${substeps.toString()}}$v`);
 		}
