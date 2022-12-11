@@ -39,7 +39,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s` icon: ${embed.author.iconUrl} `);
 			substeps.push(``);
 
-			steps.push(`{${substeps.join("")}}$v`);
+			steps.push(`{${substeps}}$v`);
 		}
 
 		if (embed.title) steps.push(s`{title: ${embed.title}}$v`);
@@ -61,7 +61,7 @@ export default function Output({ embed }: { embed: Embed }) {
 			}
 			substeps.push(``);
 
-			steps.push(substeps.join(""));
+			steps.push(substeps);
 		}
 
 		if (embed.image) steps.push(s`{image: ${embed.image}}$v`);
@@ -80,7 +80,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
 
-			steps.push(substeps.join(""));
+			steps.push(substeps);
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
