@@ -38,7 +38,7 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.author.iconUrl)
 				substeps.push(`&& icon: ${embed.author.iconUrl}`);
 
-			steps.push(`{${substeps.toString()}}$v`);
+			steps.push(`{${substeps.join("")}}$v`);
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
