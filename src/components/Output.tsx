@@ -29,23 +29,24 @@ export default function Output({ embed }: { embed: Embed }) {
 		const steps = [""];
 
 		if (embed.author.name || embed.author.url || embed.author.iconUrl) {
-			const substeps = [""];
+			const substeps = ["{"];
 
 			if (embed.author.name)
-				substeps.push(`author: ${embed.author.name} && `);
+				substeps.push(`author: ${embed.author.name} `);
 			if (embed.author.url)
-				substeps.push(`url: ${embed.author.url} && `);
+				substeps.push(`&& url: ${embed.author.url} `);
 			if (embed.author.iconUrl)
-				substeps.push(`icon: ${embed.author.iconUrl} `);
+				substeps.push(`&& icon: ${embed.author.iconUrl}`);
+			substeps.push(`}$v`)
 
-			steps.push(`{${substeps}}$v`);
+			steps.push(substeps.toString());
 		}
 
-		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
+		if (embed.title) steps.push(s`{title: ${embed.title}}$v`);
 
-		if (embed.content) steps.push(`{content: ${embed.content}}$v`);
+		if (embed.content) steps.push(s`{content: ${embed.content}}$v`);
 
-		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}$v`)
+		if (embed.autodelete) steps.push(s`{autodelete: ${embed.autodelete}}$v`)
 
 		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
 
@@ -56,26 +57,26 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			for (const field of embed.fields) {
-				substeps.push(`{`);
-				substeps.push(`field: ${field.name} &&`);
-				substeps.push(`value: ${field.value} `);
-				if (field.inline) substeps.push(`&& inline: true`);
-				substeps.push(`}$v`);
+				substeps.push(s`{`);
+				substeps.push(s`field: ${field.name} &&`);
+				substeps.push(s`value: ${field.value} `);
+				if (field.inline) substeps.push(s`&& inline: true`);
+				substeps.push(s`}$v`);
 			}
 
-			steps.push(`${substeps}`);
+			steps.push(substeps.toString());
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
 
 			for (const button of embed.buttons) {
-				substeps.push(`{`);
-				substeps.push(`label: ${button.label} && `);
-				substeps.push(`link: ${button.url}`);
-				substeps.push(`}$v`);
+				substeps.push(s`{`);
+				substeps.push(s`label: ${button.label} && `);
+				substeps.push(s`link: ${button.url}`);
+				substeps.push(s`}$v`);
 			}
 
-			steps.push(`${substeps}`);
+			steps.push(substeps.toString());
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -94,7 +95,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
 
-			steps.push(`${substeps}`);
+			steps.push(substeps.toString());
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
