@@ -19,7 +19,7 @@ export interface Embed {
 	/**
 	 * Embed timestamp in epoch time.
 	 */
-	timestamp?: string;
+	timestamp?: boolean;
 	/**
 	 * Embed color.
 	 */
@@ -48,8 +48,8 @@ export interface Embed {
 }
 
 export interface Buttons {
-	label?: string;
-	url?: string;
+	label: string;
+	url: string;
 }
 
 export interface EmbedFooter {

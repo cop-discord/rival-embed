@@ -63,7 +63,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(`}$v`);
 			}
 
-			steps.push(substeps);
+			steps.push(substeps.toString( ));
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
@@ -75,7 +75,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(`}$v`);
 			}
 
-			steps.push(substeps);
+			steps.push(substeps.toString( ));
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -94,7 +94,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
 
-			steps.push(substeps);
+			steps.push(substeps.toString( ));
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);

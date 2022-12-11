@@ -90,7 +90,7 @@ __Underline__`,
 	},
 	timestamp: true,
 	content: "Content",
-	autodelete: 5,
+	autodelete: '5',
 	buttons: [
 		{
 			label: "Label",
@@ -119,7 +119,7 @@ export default function Home() {
 
 	const [footerText, setFooterText] = useState("");
 	const [footerIcon, setFooterIcon] = useState("");
-	const [timestamp, setTimestamp] = useState<number | undefined>(undefined);
+	const [timestamp, setTimestamp] = useState<boolean | undefined>(undefined);
 
 	const [embedLoaded, setEmbedLoaded] = useState(false);
 
@@ -183,7 +183,7 @@ export default function Home() {
 				"The total number of characters in the embed content must not exceed 6000!"
 			);
 		}
-	}, [title, description, fields, footerText, authorName]);
+	}, [title, description, fields, buttons, autodelete, content, footerText, authorName]);
 
 	function loadEmbed(embed: Embed) {
 		setAuthorIcon(embed.author?.iconUrl ?? "");
@@ -694,7 +694,7 @@ export default function Home() {
 							checked={!!timestamp}
 							onChange={e =>
 								setTimestamp(
-									e.target.checked ? Date.now() : undefined
+									e.target.checked ? true : undefined
 								)
 							}
 							className="mt-2"
