@@ -32,11 +32,11 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			if (embed.author.name)
-				substeps.push(`author: ${embed.author.name} &&`);
+				substeps.push(`author: ${embed.author.name} && `);
 			if (embed.author.url)
-				substeps.push(` url: ${embed.author.url} &&`);
+				substeps.push(`url: ${embed.author.url} && `);
 			if (embed.author.iconUrl)
-				substeps.push(` icon: ${embed.author.iconUrl} `);
+				substeps.push(`icon: ${embed.author.iconUrl} `);
 
 			steps.push(`{${substeps}}$v`);
 		}
@@ -45,7 +45,7 @@ export default function Output({ embed }: { embed: Embed }) {
 
 		if (embed.content) steps.push(`{content: ${embed.content}}$v`);
 
-		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}`)
+		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}$v`)
 
 		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
 
@@ -58,8 +58,8 @@ export default function Output({ embed }: { embed: Embed }) {
 			for (const field of embed.fields) {
 				substeps.push(`{`);
 				substeps.push(`field: ${field.name} &&`);
-				substeps.push(` value: ${field.value}`);
-				if (field.inline) substeps.push(` && inline: true`);
+				substeps.push(`value: ${field.value} `);
+				if (field.inline) substeps.push(`&& inline: true`);
 				substeps.push(`}$v`);
 			}
 
@@ -70,8 +70,8 @@ export default function Output({ embed }: { embed: Embed }) {
 
 			for (const button of embed.buttons) {
 				substeps.push(`{`);
-				substeps.push(`label: ${button.label} &&`);
-				substeps.push(` link: ${button.url}`);
+				substeps.push(`label: ${button.label} && `);
+				substeps.push(`link: ${button.url}`);
 				substeps.push(`}$v`);
 			}
 

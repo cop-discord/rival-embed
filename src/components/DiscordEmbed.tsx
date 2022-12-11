@@ -83,7 +83,16 @@ export default function DiscordEmbed({ embed }: { embed: Embed }) {
 						<Markdown type="header">{embed.title}</Markdown>
 					</a>
 				) : null}
-
+				{embed.content ? (
+					<div className="min-w-0 text-sm font-normal whitespace-pre-line col-[1/1] mt-2">
+						<Markdown>{embed.content}</Markdown>
+					</div>
+				) : null}
+				{embed.autodelete ? (
+					<div className="min-w-0 text-sm font-normal whitespace-pre-line col-[1/1] mt-2">
+						<Markdown>{embed.autodelete}</Markdown>
+					</div>
+				) : null}
 				{/* Description */}
 				{embed.description ? (
 					<div className="min-w-0 text-sm font-normal whitespace-pre-line col-[1/1] mt-2">
