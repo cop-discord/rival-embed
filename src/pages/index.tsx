@@ -56,31 +56,6 @@ Code Blocks
 __Underline__`,
 	color: "#00b0f4",
 	fields: [
-		{
-			name: "Field Name",
-			value: "This is the field value.",
-			inline: false
-		},
-		{
-			name: "The first inline field.",
-			value: "This field is inline.",
-			inline: true
-		},
-		{
-			name: "The second inline field.",
-			value: "Inline fields are stacked next to each other.",
-			inline: true
-		},
-		{
-			name: "The third inline field.",
-			value: "You can have up to 3 inline fields in a row.",
-			inline: true
-		},
-		{
-			name: "Even if the next field is inline...",
-			value: "It won't stack with the previous inline fields.",
-			inline: true
-		}
 	],
 	image: "https://rival.rocks/instagram.png",
 	thumbnail: "https://rival.rocks/instagram.png",
@@ -92,10 +67,6 @@ __Underline__`,
 	content: "Content",
 	autodelete: '5',
 	buttons: [
-		{
-			label: "Label",
-			url: "Link",
-		}
 	]
 };
 
