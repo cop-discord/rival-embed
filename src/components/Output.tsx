@@ -53,26 +53,26 @@ export default function Output({ embed }: { embed: Embed }) {
 			steps.push(`{description: ${embed.description}}$v`);
 
 		if (embed.fields.length > 0) {
-			const substeps = [""];
+			var substeps = "";
 
 			for (const field of embed.fields) {
-				substeps.push(`{field: ${field.name} && value: ${field.value} `);
-				if (field.inline) substeps.push(`&& inline: true`);
-				substeps.push(`}$v`);
+				substeps+=`{field: ${field.name} && value: ${field.value} `;
+				if (field.inline) substeps+=`&& inline: true`;
+				substeps+=`}$v`;
 			}
 
-			steps.push(substeps.toString());
+			steps.push(substeps);
 		}
 		if (embed.buttons.length > 0) {
-			const substeps = [""];
+			var substeps = "";
 
 			for (const button of embed.buttons) {
-				substeps.push(`{label: ${button.label} && `);
-				substeps.push(`link: ${button.url}`);
-				substeps.push(`}$v`);
+				substeps+=`{label: ${button.label} && `;
+				substeps+=`link: ${button.url}`;
+				substeps+=`}$v`;
 			}
 
-			steps.push(substeps.toString());
+			steps.push(substeps);
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -83,14 +83,14 @@ export default function Output({ embed }: { embed: Embed }) {
 		if (embed.color) steps.push(s`{color: ${embed.color}}$v`);
 
 		if (embed.footer.text || embed.footer.iconUrl) {
-			const substeps = [""];
+			var substeps = "";
 
 			if (embed.footer.text)
-				substeps.push(s`footer: ${embed.footer.text} `);
+				substeps+=`footer: ${embed.footer.text} `;
 			if (embed.footer.iconUrl)
-				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
+				substeps+=`&& icon: ${embed.footer.iconUrl}`;
 
-			steps.push(`{${substeps.toString()}$v`);
+			steps.push(`{${substeps}$v`);
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
