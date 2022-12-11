@@ -214,31 +214,31 @@ export default function Home() {
 
 	const embed: Embed = {
 		author: {
-			name: authorName.trim(),
-			iconUrl: authorIcon.trim(),
-			url: authorUrl.trim()
+			name: authorName,
+			iconUrl: authorIcon,
+			url: authorUrl
 		},
-		title: title.trim(),
-		url: url.trim(),
-		description: description.trim(),
+		title: title,
+		url: url,
+		description: description,
 		fields: fields.map(field => ({
-			name: field.name.trim(),
-			value: field.value.trim(),
+			name: field.name,
+			value: field.value,
 			inline: field.inline
 		})),
-		image: image.trim(),
-		thumbnail: thumbnail.trim(),
+		image: image,
+		thumbnail: thumbnail,
 		color: colorEnabled ? color : undefined,
 		footer: {
-			text: footerText.trim(),
-			iconUrl: footerIcon.trim()
+			text: footerText,
+			iconUrl: footerIcon
 		},
 		timestamp,
-		content: content.trim(),
-		autodelete: autodelete.trim(),
+		content: content,
+		autodelete: autodelete,
 		buttons: buttons.map(butto => ({
-			label: butto.label.trim(),
-			url: butto.url.trim()
+			label: butto.label,
+			url: butto.url
 		}))
 	};
 
