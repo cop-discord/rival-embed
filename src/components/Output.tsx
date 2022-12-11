@@ -38,7 +38,7 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.author.iconUrl)
 				substeps.push(` icon: ${embed.author.iconUrl} `);
 
-			steps.push(`{${substeps}}$v`);
+			steps.push(`{${substeps.toString()}}$v`);
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
@@ -56,26 +56,24 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			for (const field of embed.fields) {
-				substeps.push(`{`);
-				substeps.push(`field: ${field.name} &&`);
+				substeps.push(`{field: ${field.name} &&`);
 				substeps.push(` value: ${field.value}`);
 				if (field.inline) substeps.push(` && inline: true`);
 				substeps.push(`}$v`);
 			}
 
-			steps.push(substeps.toString( ));
+			steps.push(substeps.toString());
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
 
 			for (const button of embed.buttons) {
-				substeps.push(`{`);
-				substeps.push(`label: ${button.label} &&`);
-				substeps.push(` link: ${button.url}`);
+				substeps.push(`{label: ${button.label} && `);
+				substeps.push(`link: ${button.url}`);
 				substeps.push(`}$v`);
 			}
 
-			steps.push(substeps.toString( ));
+			steps.push(substeps.toString());
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -86,15 +84,14 @@ export default function Output({ embed }: { embed: Embed }) {
 		if (embed.color) steps.push(s`{color: ${embed.color}}$v`);
 
 		if (embed.footer.text || embed.footer.iconUrl) {
-			const substeps = ["{"];
+			const substeps = [""];
 
 			if (embed.footer.text)
 				substeps.push(s`footer: ${embed.footer.text} `);
 			if (embed.footer.iconUrl)
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
-			substeps.push(`}$v`);
 
-			steps.push(substeps.toString( ));
+			steps.push(`{${substeps.toString()}$v`);
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
