@@ -26,7 +26,7 @@ export default function Output({ embed }: { embed: Embed }) {
 	if (language === "json") {
 		output = embedToObjectCode(embed, false);
 	} else if (language === "rival") {
-		const steps = [""];
+		var steps = "";
 
 		if (embed.author.name || embed.author.url || embed.author.iconUrl) {
 			var substeps = "";
@@ -38,19 +38,19 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.author.iconUrl)
 				substeps+=`&& icon: ${embed.author.iconUrl}`;
 
-			steps.push(`{${substeps}}$v`);
+			steps+=`{${substeps}}$v`;
 		}
 
-		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
+		if (embed.title) steps+=`{title: ${embed.title}}$v`;
 
-		if (embed.content) steps.push(`{content: ${embed.content}}$v`);
+		if (embed.content) steps+=`{content: ${embed.content}}$v`;
 
-		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}`)
+		if (embed.autodelete) steps+=`{autodelete: ${embed.autodelete}}`;
 
-		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
+		if (embed.url) steps+=`{url: ${embed.url}}$v`;
 
 		if (embed.description)
-			steps.push(`{description: ${embed.description}}$v`);
+			steps+=`{description: ${embed.description}}$v`;
 
 		if (embed.fields.length > 0) {
 			var substeps = "";
@@ -61,7 +61,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps+=`}$v`;
 			}
 
-			steps.push(substeps);
+			steps+=substeps;
 		}
 		if (embed.buttons.length > 0) {
 			var substeps = "";
@@ -72,15 +72,15 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps+=`}$v`;
 			}
 
-			steps.push(substeps);
+			steps+=substeps;
 		}
 
-		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
+		if (embed.image) steps+=`{image: ${embed.image}}$v`;
 
 		if (embed.thumbnail)
-			steps.push(`{thumbnail: ${embed.thumbnail}}$v`);
+			steps+=`{thumbnail: ${embed.thumbnail}}$v`;
 
-		if (embed.color) steps.push(s`{color: ${embed.color}}$v`);
+		if (embed.color) steps+=`{color: ${embed.color}}$v`;
 
 		if (embed.footer.text || embed.footer.iconUrl) {
 			var substeps = "";
@@ -90,12 +90,12 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.footer.iconUrl)
 				substeps+=`&& icon: ${embed.footer.iconUrl}`;
 
-			steps.push(`{${substeps}$v`);
+			steps+=`{${substeps}$v`;
 		}
 
-		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
+		if (embed.timestamp) steps+=`{timestamp: true}$v`;
 
-		output += steps.join("");
+		output += steps;
 	} else {
 		output += `embed = discord.Embed(`;
 
