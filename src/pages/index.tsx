@@ -82,11 +82,11 @@ __Underline__`,
 			inline: true
 		}
 	],
-	image: "https://cubedhuang.com/images/alex-knight-unsplash.webp",
-	thumbnail: "https://dan.onl/images/emptysong.jpg",
+	image: "https://rival.rocks/instagram.png",
+	thumbnail: "https://rival.rocks/instagram.png",
 	footer: {
 		text: "Example Footer",
-		iconUrl: "https://slate.dan.onl/slate.png"
+		iconUrl: "https://rival.rocks/instagram.png"
 	},
 	timestamp: Date.now()
 };
@@ -233,12 +233,12 @@ export default function Home() {
 							Discord Embed Creator
 						</h1>
 						<a
-							href="https://github.com/cubedhuang/discord-embed-creator"
+							href="Rival"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:underline"
 						>
-							GitHub
+							Rival
 						</a>
 					</div>
 
