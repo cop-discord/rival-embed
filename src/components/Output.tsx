@@ -32,9 +32,9 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			if (embed.author.name)
-				substeps.push(`author: ${embed.author.name} &&`);
+				substeps.push(`author: ${embed.author.name} && `);
 			if (embed.author.url)
-				substeps.push(` url: ${embed.author.url} &&`);
+				substeps.push(`url: ${embed.author.url} && `);
 			if (embed.author.iconUrl)
 				substeps.push(` icon: ${embed.author.iconUrl} `);
 
@@ -56,9 +56,8 @@ export default function Output({ embed }: { embed: Embed }) {
 			const substeps = [""];
 
 			for (const field of embed.fields) {
-				substeps.push(`{field: ${field.name} &&`);
-				substeps.push(` value: ${field.value}`);
-				if (field.inline) substeps.push(` && inline: true`);
+				substeps.push(`{field: ${field.name} && value: ${field.value} `);
+				if (field.inline) substeps.push(`&& inline: true`);
 				substeps.push(`}$v`);
 			}
 
