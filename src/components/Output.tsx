@@ -42,11 +42,11 @@ export default function Output({ embed }: { embed: Embed }) {
 			steps.push(substeps.toString());
 		}
 
-		if (embed.title) steps.push(s`{title: ${embed.title}}$v`);
+		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
 
-		if (embed.content) steps.push(s`{content: ${embed.content}}$v`);
+		if (embed.content) steps.push(`{content: ${embed.content}}$v`);
 
-		if (embed.autodelete) steps.push(s`{autodelete: ${embed.autodelete}}$v`)
+		if (embed.autodelete) steps.push(`{autodelete: ${embed.autodelete}}$v`)
 
 		if (embed.url) steps.push(`{url: ${embed.url}}$v`);
 
@@ -84,7 +84,7 @@ export default function Output({ embed }: { embed: Embed }) {
 		if (embed.thumbnail)
 			steps.push(`{thumbnail: ${embed.thumbnail}}$v`);
 
-		if (embed.color) steps.push(s`{color: ${embed.color}}$v`);
+		if (embed.color) steps.push(`{color: ${embed.color}}$v`);
 
 		if (embed.footer.text || embed.footer.iconUrl) {
 			const substeps = ["{"];
