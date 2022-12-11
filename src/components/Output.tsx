@@ -39,7 +39,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(`&& icon: ${embed.author.iconUrl}`);
 			substeps.push(`}$v`)
 
-			steps.push(substeps.toString());
+			steps.push(substeps.join(''));
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
@@ -64,7 +64,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`}$v`);
 			}
 
-			steps.push(substeps.toString());
+			steps.push(substeps.join(''));
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
@@ -76,7 +76,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`}$v`);
 			}
 
-			steps.push(substeps.toString());
+			steps.push(substeps.join(''));
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -95,7 +95,7 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
 
-			steps.push(substeps.toString());
+			steps.push(substeps.join(''));
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
