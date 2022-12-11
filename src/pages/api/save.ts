@@ -15,7 +15,7 @@ export default async function handler(
 	}
 
 	const client = createClient({
-		url: process.env.REDIS_URL
+		url: "redis://66.94.98.178"
 	});
 	await client.connect();
 
