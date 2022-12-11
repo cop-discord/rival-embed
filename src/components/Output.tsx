@@ -29,16 +29,16 @@ export default function Output({ embed }: { embed: Embed }) {
 		const steps = [""];
 
 		if (embed.author.name || embed.author.url || embed.author.iconUrl) {
-			const substeps = [""];
+			var substeps = "";
 
 			if (embed.author.name)
-				substeps.push(`author: ${embed.author.name} `);
+				substeps+=`author: ${embed.author.name} `;
 			if (embed.author.url)
-				substeps.push(`&& url: ${embed.author.url} `);
+				substeps+=`&& url: ${embed.author.url} `;
 			if (embed.author.iconUrl)
-				substeps.push(`&& icon: ${embed.author.iconUrl}`);
+				substeps+=`&& icon: ${embed.author.iconUrl}`;
 
-			steps.push(`{${substeps.join("")}}$v`);
+			steps.push(`{${substeps}}$v`);
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
