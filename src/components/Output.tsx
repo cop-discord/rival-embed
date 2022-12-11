@@ -39,7 +39,8 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(`&& icon: ${embed.author.iconUrl}`);
 			substeps.push(`}$v`)
 
-			steps.push(substeps.join(''));
+			const set = substeps.map(str => str.toString().trim())
+			steps.push(`${set}`);
 		}
 
 		if (embed.title) steps.push(`{title: ${embed.title}}$v`);
@@ -64,7 +65,8 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`}$v`);
 			}
 
-			steps.push(substeps.join(''));
+			const set = substeps.map(str => str.toString().trim())
+			steps.push(`${set}`);
 		}
 		if (embed.buttons.length > 0) {
 			const substeps = [""];
@@ -76,7 +78,8 @@ export default function Output({ embed }: { embed: Embed }) {
 				substeps.push(s`}$v`);
 			}
 
-			steps.push(substeps.join(''));
+			const set = substeps.map(str => str.toString().trim())
+			steps.push(`${set}`);
 		}
 
 		if (embed.image) steps.push(`{image: ${embed.image}}$v`);
@@ -94,8 +97,8 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.footer.iconUrl)
 				substeps.push(s`&& icon: ${embed.footer.iconUrl}`);
 			substeps.push(`}$v`);
-
-			steps.push(substeps.join(''));
+			const set = substeps.map(str => str.toString().trim())
+			steps.push(`${set}`);
 		}
 
 		if (embed.timestamp) steps.push(`{timestamp: true}$v`);
