@@ -327,6 +327,12 @@ export default function Home() {
 							) : null}
 						</h2>
 					</summary>
+						<ValueInput
+						label="Content"
+						value={[content, setContent]}
+						limit={2000}
+						textarea={true}
+					/>
 				</details>
 				<details open>
 					<summary>
@@ -337,6 +343,12 @@ export default function Home() {
 							) : null}
 						</h2>
 					</summary>
+						<ValueInput
+						label="AutoDelete"
+						value={[autodelete, setAutoDelete]}
+						limit={1}
+						textarea={true}
+					/>
 				</details>
 				<details open>
 					<summary>
