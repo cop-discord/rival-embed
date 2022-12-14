@@ -22,7 +22,7 @@ export default function Output({ embed }: { embed: Embed }) {
 	const [jsVersion, setJsVersion] = useState("14");
 	const [jsMode, setJsMode] = useState("chained");
 
-	let output = "";
+	let output = "{embed}";
 	if (language === "json") {
 		output = embedToObjectCode(embed, false);
 	} else if (language === "rival") {
