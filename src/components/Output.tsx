@@ -90,7 +90,7 @@ export default function Output({ embed }: { embed: Embed }) {
 			if (embed.footer.iconUrl)
 				substeps+=`&& icon: ${embed.footer.iconUrl}`;
 
-			steps+=`{${substeps}$v`;
+			steps+=`{${substeps}}$v`;
 		}
 
 		if (embed.timestamp) steps+=`{timestamp: true}$v`;
