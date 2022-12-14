@@ -33,39 +33,25 @@ function setAllDetails(open: boolean) {
 
 const infoEmbed: Embed = {
 	author: {
-		name: "Info",
-		url: "https://example.com",
+		name: "",
+		url: "",
 		iconUrl: ""
 	},
-	title: "Example Title",
-	url: "https://example.com",
-	description: `This is an example description. Markdown works too!
-
-https://automatic.links
-> Block Quotes
-\`\`\`
-Code Blocks
-\`\`\`
-*Emphasis* or _emphasis_
-\`Inline code\` or \`\`inline code\`\`
-[Links](https://example.com)
-<@123>, <@!123>, <#123>, <@&123>, @here, @everyone mentions
-||Spoilers||
-~~Strikethrough~~
-**Strong**
-__Underline__`,
-	color: "#00b0f4",
+	title: "",
+	url: "",
+	description: ``,
+	color: "",
 	fields: [
 	],
-	image: "https://rival.rocks/instagram.png",
-	thumbnail: "https://rival.rocks/instagram.png",
+	image: "",
+	thumbnail: "",
 	footer: {
-		text: "Example Footer",
-		iconUrl: "https://rival.rocks/instagram.png"
+		text: "",
+		iconUrl: ""
 	},
 	timestamp: true,
-	content: "Content",
-	autodelete: '5',
+	content: "",
+	autodelete: '',
 	buttons: [
 	]
 };
