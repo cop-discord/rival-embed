@@ -199,7 +199,7 @@ export default function Home() {
 		}))
 	};
 
-	return (
+	return (<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<div className="screen flex min-h-screen">
 			<div className="flex-1 embed-inputs">
 				<div>
