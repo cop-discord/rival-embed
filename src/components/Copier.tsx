@@ -71,7 +71,7 @@ export default function Copier({
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? `${getContent()}`
+				? `${async () => {const content = getContent()}}`
 				: "An error occurred."}
 		</button>
 	);
