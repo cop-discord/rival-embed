@@ -48,16 +48,16 @@ export default function Copier({
 
 				if (typeof content === "string") {
 					navigator.clipboard.writeText(content);
-					setState(CopierState.Copied);
-                                        hh+=await content;
-					return await content;
+					hh+=content
+                                        setState(CopierState.Copied);
+					return;
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
-				setState(CopierState.Copied);
                                 hh+=await content;
-                                return await content;
+				setState(CopierState.Copied);
+                                return;
 			}}
 			className={`${className} ${
 				state === CopierState.Idle
