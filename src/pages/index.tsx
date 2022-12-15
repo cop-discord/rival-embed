@@ -673,7 +673,7 @@ export default function Home() {
 				</details>
 			</div>
 
-			<div className="flex-1 bg-[#36393f] p-8">
+			<div className="flex-1 bg-[#36393f] p-8" scale=0.25>
 				<DiscordEmbed embed={embed} />
 
 				<Output embed={embed} />
