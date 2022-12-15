@@ -67,12 +67,12 @@ export default function Copier({
 					: errorClassName
 			}`}
 		>
-			{state === CopierState.Idle
+			{async state === CopierState.Idle
 				? children
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? `${async () => {const content = getContent()}}`
+				? `${await getContent()}`
 				: "An error occurred."}
 		</button>
 	);
