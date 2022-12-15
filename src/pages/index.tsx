@@ -14,7 +14,8 @@ function ellipses(str: string, max = 50) {
 }
 
 function button(type: "blue" | "red" | "disabled" = "blue") {
-	return `font-medium py-1 px-2 rounded transition ${
+	return `<meta name="viewport" content="width=device-width, initial-scale=1.0">
+                font-medium py-1 px-2 rounded transition ${
 		type === "blue"
 			? "bg-[#5865f2] hover:bg-[#4752c4] text-white"
 			: type === "red"
