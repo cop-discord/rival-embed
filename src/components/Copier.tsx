@@ -48,7 +48,7 @@ export default function Copier({
 
 				if (typeof content === "string") {
 					navigator.clipboard.writeText(content);
-					hh+=content
+					hh+=content;
                                         setState(CopierState.Copied);
 					return;
 				}
