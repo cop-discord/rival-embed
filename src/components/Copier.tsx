@@ -27,7 +27,7 @@ export default function Copier({
 	errorClassName?: string;
 }) {
 	const [state, setState] = useState(CopierState.Idle);
-
+        var hh = ""
 	useEffect(() => {
 		if (state !== CopierState.Copied) return;
 
@@ -49,12 +49,14 @@ export default function Copier({
 				if (typeof content === "string") {
 					navigator.clipboard.writeText(content);
 					setState(CopierState.Copied);
+                                        hh+=await content;
 					return await content;
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
 				setState(CopierState.Copied);
+                                hh+=await content;
                                 return await content;
 			}}
 			className={`${className} ${
@@ -67,12 +69,12 @@ export default function Copier({
 					: errorClassName
 			}`}
 		>
-			{async => {state === CopierState.Idle
+			{state === CopierState.Idle
 				? children
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? `${await getContent()}`
+				? `${hh}`
 				: "An error occurred."}}
 		</button>
 	);
