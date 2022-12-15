@@ -49,12 +49,13 @@ export default function Copier({
 				if (typeof content === "string") {
 					navigator.clipboard.writeText(content);
 					setState(CopierState.Copied);
-					return;
+					return await content;
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
 				setState(CopierState.Copied);
+                                return await content;
 			}}
 			className={`${className} ${
 				state === CopierState.Idle
