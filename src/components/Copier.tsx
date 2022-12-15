@@ -53,7 +53,7 @@ export default function Copier({
 				}
 
 				setState(CopierState.Loading);
-				navigator.clipboard.writeText(content);
+				navigator.clipboard.writeText(await content);
 				setState(CopierState.Copied);
 			}}
 			className={`${className} ${
