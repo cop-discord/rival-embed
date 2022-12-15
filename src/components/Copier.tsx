@@ -67,7 +67,7 @@ export default function Copier({
 					: errorClassName
 			}`}
 		>
-			{async () => {state === CopierState.Idle
+			{async => {state === CopierState.Idle
 				? children
 				: state === CopierState.Loading
 				? "Loading..."
