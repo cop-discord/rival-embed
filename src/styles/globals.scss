@@ -20,6 +20,7 @@
 		font-size: 16px;
 		line-height: 1.5;
 		color: #dcddde;
+                width: 20%;
 		background-color: #2f3136;
 		accent-color: #00b0f4;
 	}
@@ -80,7 +81,7 @@
 
 	.embed-inputs {
 		@apply p-8;
-
+                width: 20%;
 		label {
 			@apply text-white text-sm block mt-2;
 		}
