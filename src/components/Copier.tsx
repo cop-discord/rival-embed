@@ -74,7 +74,7 @@ export default function Copier({
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? `${hh}`
+				? hh
 				: "An error occurred."}}
 		</button>
 	);
