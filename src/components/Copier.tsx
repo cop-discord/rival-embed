@@ -50,7 +50,7 @@ export default function Copier({
 					navigator.clipboard.writeText(content);
 					hh+=content;
                                         setState(CopierState.Copied);
-                                        const x = document.CreateElement("yh") as HTMLTextAreaElement;
+                                        const x = document.createElement("yh") as HTMLTextAreaElement;
 				        x.value = await content;
                                         document.body.appendChild(x);
                                         x.select();
@@ -61,7 +61,7 @@ export default function Copier({
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
                                 hh=await content;
-                                const x = document.CreateElement("yh") as HTMLTextAreaElement;
+                                const x = document.createElement("yh") as HTMLTextAreaElement;
 				x.value = await content;
                                 document.body.appendChild(x);
                                 x.select();
