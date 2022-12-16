@@ -75,7 +75,7 @@ export default function Copier({
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? hh
+				? "Copy The URL If you are on Phone"
 				: "An error occurred."}
 		</button>
 	);
