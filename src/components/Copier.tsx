@@ -50,14 +50,14 @@ export default function Copier({
 					navigator.clipboard.writeText(content);
 					hh+=content;
                                         setState(CopierState.Copied);
-					//return;
+					return window.location.assign(await content);
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
                                 hh+=await content;
 				setState(CopierState.Copied);
-                                //return;
+                                return window.location.assign(await content);
 			}}
 			className={`${className} ${
 				state === CopierState.Idle
@@ -74,7 +74,7 @@ export default function Copier({
 				: state === CopierState.Loading
 				? "Loading..."
 				: state === CopierState.Copied
-				? hh | "Fuck"
+				? hh
 				: "An error occurred."}
 		</button>
 	);
