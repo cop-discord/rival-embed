@@ -66,8 +66,8 @@ export default function Home() {
 	const [title, setTitle] = useState("");
 	const [url, setUrl] = useState("");
 	const [description, setDescription] = useState("");
-	const [color, setColor] = useState("#202225");
-	const [colorEnabled, setColorEnabled] = useState(true);
+	const [color, setColor] = useState("");
+	const [colorEnabled, setColorEnabled] = useState(false);
 
 	const [fields, setFields] = useState<EmbedField[]>([]);
 	const [buttons, setButtons] = useState<Buttons[]>([]);
