@@ -50,14 +50,14 @@ export default function Copier({
 					navigator.clipboard.writeText(content);
 					hh+=content;
                                         setState(CopierState.Copied);
-					return;
+					//return;
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
                                 hh+=await content;
 				setState(CopierState.Copied);
-                                return;
+                                //return;
 			}}
 			className={`${className} ${
 				state === CopierState.Idle
