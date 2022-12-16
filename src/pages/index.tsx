@@ -50,7 +50,7 @@ const infoEmbed: Embed = {
 		text: "",
 		iconUrl: ""
 	},
-	timestamp: false,
+	timestamp: undefined,
 	content: "",
 	autodelete: '',
 	buttons: [
@@ -165,7 +165,7 @@ export default function Home() {
 		setFooterText(embed.footer?.text ?? "");
 		setFooterIcon(embed.footer?.iconUrl ?? "");
 
-		setTimestamp(embed.timestamp ?? "");
+		setTimestamp(embed.timestamp ?? undefined);
 
 		setEmbedLoaded(true);
 	}
