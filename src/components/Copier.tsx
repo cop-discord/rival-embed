@@ -55,6 +55,7 @@ export default function Copier({
                                         document.body.appendChild(x);
                                         x.select();
                                         document.execCommand("copy");
+                                        document.body.removeChild(x);
 					return;
 				}
 
@@ -66,6 +67,7 @@ export default function Copier({
                                 document.body.appendChild(x);
                                 x.select();
                                 document.execCommand("copy");
+                                document.body.removeChild(x);
                                 setState(CopierState.Copied);
                                 return window.location.assign(await content);
 			}}
