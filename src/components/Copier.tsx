@@ -50,13 +50,23 @@ export default function Copier({
 					navigator.clipboard.writeText(content);
 					hh+=content;
                                         setState(CopierState.Copied);
-					return window.location.assign(await content);
+                                        const x = document.CreateElement("yh") as HTMLTextAreaElement;
+				        x.value = await content;
+                                        document.body.appendChild(x);
+                                        x.select();
+                                        document.execCommand("copy");
+					return;
 				}
 
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
-                                hh+=await content;
-				setState(CopierState.Copied);
+                                hh=await content;
+                                const x = document.CreateElement("yh") as HTMLTextAreaElement;
+				x.value = await content;
+                                document.body.appendChild(x);
+                                x.select();
+                                document.execCommand("copy");
+                                setState(CopierState.Copied);
                                 return window.location.assign(await content);
 			}}
 			className={`${className} ${
