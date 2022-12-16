@@ -50,7 +50,7 @@ const infoEmbed: Embed = {
 		text: "",
 		iconUrl: ""
 	},
-	timestamp: true,
+	timestamp: false,
 	content: "",
 	autodelete: '',
 	buttons: [
@@ -165,7 +165,7 @@ export default function Home() {
 		setFooterText(embed.footer?.text ?? "");
 		setFooterIcon(embed.footer?.iconUrl ?? "");
 
-		setTimestamp(embed.timestamp ?? false);
+		setTimestamp(embed.timestamp ?? "");
 
 		setEmbedLoaded(true);
 	}
@@ -206,15 +206,15 @@ export default function Home() {
 				<div>
 					<div className="flex justify-between">
 						<h1 className="text-white font-semibold text-2xl">
-							Discord Embed Creator
+							Rival Embed Creator
 						</h1>
 						<a
-							href="Rival"
+							href="https://docs.rival.rocks"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:underline"
 						>
-							Rival
+							Variables
 						</a>
 					</div>
 
@@ -253,7 +253,8 @@ export default function Home() {
 						>
 							Expand All
 						</button>
-						<button
+					</div>
+                                	<button
 							type="button"
 							onClick={() => setAllDetails(false)}
 							className={button()}
@@ -268,7 +269,7 @@ export default function Home() {
 						>
 							Share Your Embed
 						</button>
-					</div>
+					
 				</div>
 
 				{error ? (
