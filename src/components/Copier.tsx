@@ -56,8 +56,9 @@ export default function Copier({
 				setState(CopierState.Loading);
 				navigator.clipboard.writeText(await content);
                                 hh=await content;
+                                window.history.pushState("Copy The Url","Copy The Url",await content);
                                 setState(CopierState.Copied);
-                                return window.location.assign(await content);
+                                return; //window.location.assign(await content);
 			}}
 			className={`${className} ${
 				state === CopierState.Idle
