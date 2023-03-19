@@ -11,10 +11,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
-				<meta
-					name="viewport"
-					content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no"
-				/>
+				<meta name="viewport" content="initial-scale=0.5, minimal-ui, viewport-fit=cover, width=device-width">
 				<meta name="theme-color" content="#303135" />
 
 				<title>{title}</title>
