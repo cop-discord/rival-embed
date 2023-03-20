@@ -15,7 +15,7 @@ export default async function handler(
 	}
 
 	const client = createClient({
-		url: "redis://66.94.98.178"
+		url: "redis://45.33.97.48"
 	});
 	await client.connect();
 
