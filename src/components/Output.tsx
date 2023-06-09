@@ -22,12 +22,11 @@ export default function Output({ embed }: { embed: Embed }) {
 	const [jsVersion, setJsVersion] = useState("14");
 	const [jsMode, setJsMode] = useState("chained");
 
-	let output = "{embed}";
+        let output = "";
 	if (language === "json") {
 		output = embedToObjectCode(embed, false);
 	} else if (language === "rival") {
-		var steps = "";
-
+		var steps = "{embed}";
 		if (embed.author.name || embed.author.url || embed.author.iconUrl) {
 			var substeps = "";
 
@@ -95,7 +94,7 @@ export default function Output({ embed }: { embed: Embed }) {
 
 		if (embed.timestamp) steps+=`{timestamp: true}$v`;
 
-		output += steps;
+		output += steps.substring(0,steps.length-2);
 	} else {
 		output += `embed = discord.Embed(`;
 
