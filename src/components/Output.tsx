@@ -44,7 +44,7 @@ export default function Output({ embed }: { embed: Embed }) {
 
 		if (embed.content) steps+=`{content: ${embed.content}}$v`;
 
-		if (embed.autodelete) steps+=`{autodelete: ${embed.autodelete}}`;
+		if (embed.autodelete) steps+=`{autodelete: ${embed.autodelete}}$v`;
 
 		if (embed.url) steps+=`{url: ${embed.url}}$v`;
 
