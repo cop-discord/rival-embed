@@ -6,7 +6,7 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	const client = createClient({
-		url: "redis://45.33.97.48"
+		url: "redis://23.26.60.58"
 	});
 	await client.connect();
 
