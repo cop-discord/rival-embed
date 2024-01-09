@@ -705,7 +705,12 @@ export default function Home() {
 								)}`
 							}
 							idleClassName={button()}
+							loadingClassName={`${button(
+								"disabled"
+							)} animate-pulse`}
 							copiedClassName={button("disabled")}
+							errorClassName={button("disabled")}
+							timeout={30000}
 						>
 							Copy Short Link
 						</Copier>
