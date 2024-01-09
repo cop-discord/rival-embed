@@ -102,7 +102,7 @@ export default function Home() {
 				let embed: any;
 
 				if (id) {
-                                        embed = await fetch(`/api/load?id=${id}`)
+					embed = await fetch(`/api/load?id=${id}`)
 						.then(res => res.json())
 						.then(res => res.embed);
 
