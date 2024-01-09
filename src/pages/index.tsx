@@ -102,9 +102,12 @@ export default function Home() {
 				let embed: any;
 
 				if (id) {
-                                        const embedString = Array.isArray(data) ? data[0] : data;
+                                        embed = await fetch(`/api/load?id=${id}`)
+						.then(res => res.json())
+						.then(res => res.embed);
 
-					embed = JSON.parse(atob(embedString));
+					if (!embed) {
+						throw new Error("No embed found.");
 					}
 				} else if (data) {
 					const embedString = Array.isArray(data) ? data[0] : data;
