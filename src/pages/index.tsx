@@ -102,12 +102,9 @@ export default function Home() {
 				let embed: any;
 
 				if (id) {
-					embed = await fetch(`/api/load?id=${id}`)
-						.then(res => res.json())
-						.then(res => res.embed);
+                                        const embedString = Array.isArray(data) ? data[0] : data;
 
-					if (!embed) {
-						throw new Error("No embed found.");
+					embed = JSON.parse(atob(embedString));
 					}
 				} else if (data) {
 					const embedString = Array.isArray(data) ? data[0] : data;
@@ -702,26 +699,13 @@ export default function Home() {
 						</p>
 
 						<Copier
-							getContent={async () => {
-								const { id } = await fetch("/api/save", {
-									body: JSON.stringify({
-										embed: embedToPartial(embed)
-									}),
-									method: "POST",
-									headers: {
-										"Content-Type": "application/json"
-									}
-								}).then(res => res.json());
-
-								return `${location.origin}/?id=${id}`;
-							}}
+							getContent={() =>
+								`${location.origin}/?data=${encodeURIComponent(
+									btoa(JSON.stringify(embedToPartial(embed)))
+								)}`
+							}
 							idleClassName={button()}
-							loadingClassName={`${button(
-								"disabled"
-							)} animate-pulse`}
 							copiedClassName={button("disabled")}
-							errorClassName={button("disabled")}
-							timeout={30000}
 						>
 							Copy Short Link
 						</Copier>
