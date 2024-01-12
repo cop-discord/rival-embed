@@ -96,7 +96,7 @@ export default function Output({ embed }: { embed: Embed }) {
                 if (steps.endsWith("$v")) {
 			output += steps.substring(0,steps.length-2);
 		} else { 
-		    output += steps.substring(0, steps.length-2);
+		    output += steps.substring(0, steps.length);
 		}
 	} else {
 		output += `embed = discord.Embed(`;
