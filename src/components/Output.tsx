@@ -93,10 +93,11 @@ export default function Output({ embed }: { embed: Embed }) {
 		}
 
 		if (embed.timestamp) steps+=`{timestamp: true}$v`;
-                if steps.endsWith("$v"):
-		    output += steps.substring(0,steps.length-2);
-		else:
+                if (steps.endsWith("$v")) {
+			output += steps.substring(0,steps.length-2);
+		} else { 
 		    output += steps.substring(0, steps.length-2);
+		}
 	} else {
 		output += `embed = discord.Embed(`;
 
