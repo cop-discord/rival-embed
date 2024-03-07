@@ -37,6 +37,8 @@ export default function DiscordEmbed({ embed }: { embed: Embed }) {
 			className="bg-[#2f3136] border-l-4 border-solid relative grid w-fit max-w-[520px] box-border rounded leading-[1.375rem]"
 			style={{ borderLeftColor: embed.color || "#202225" }}
 		>
+		<div> 
+		</div>
 			<div className="overflow-hidden p-[.5rem_1rem_1rem_.75rem] inline-grid grid-cols-[auto] grid-rows-[auto]">
 				{/* Author */}
 				{embed.author.name || embed.author.iconUrl ? (
@@ -82,11 +84,6 @@ export default function DiscordEmbed({ embed }: { embed: Embed }) {
 					>
 						<Markdown type="header">{embed.title}</Markdown>
 					</a>
-				) : null}
-				{embed.content ? (
-					<div className="min-w-0 text-sm font-normal whitespace-pre-line col-[1/1] mt-2">
-						<Markdown>{embed.content}</Markdown>
-					</div>
 				) : null}
 				{embed.autodelete ? (
 					<div className="min-w-0 text-sm font-normal whitespace-pre-line col-[1/1] mt-2">
