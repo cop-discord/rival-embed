@@ -8,6 +8,7 @@ import Output from "../components/Output";
 import ValueInput from "../components/ValueInput";
 import { Buttons, Embed, EmbedField } from "../lib/interfaces";
 import { embedToPartial } from "../lib/utils";
+import Markdown from "../lib/markdown/Markdown"
 
 function ellipses(str: string, max = 50) {
 	return str.length > max ? `${str.slice(0, max - 3)}...` : str;
@@ -199,6 +200,34 @@ export default function Home() {
 			url: butto.url
 		}))
 	};
+	const embed2: Embed = {
+		author: {
+			name: authorName,
+			iconUrl: authorIcon,
+			url: authorUrl
+		},
+		title: title,
+		url: url,
+		description: description,
+		fields: fields.map(field => ({
+			name: field.name,
+			value: field.value,
+			inline: field.inline
+		})),
+		image: image,
+		thumbnail: thumbnail,
+		color: colorEnabled ? color : undefined,
+		footer: {
+			text: footerText,
+			iconUrl: footerIcon
+		},
+		timestamp,
+		buttons: buttons.map(butto => ({
+			label: butto.label,
+			url: butto.url
+		}))
+	};
+
 
 	return (
 		<div className="screen flex min-h-screen">
@@ -675,7 +704,12 @@ export default function Home() {
 			</div>
 
 			<div className="flex-1 bg-[#36393f] p-8">
-				<DiscordEmbed embed={embed} />
+				{embed.content ? (
+					<div className="">
+						<Markdown type="content">{embed.content}</Markdown>
+					</div>
+				) : null}
+				<DiscordEmbed embed={embed2} />
 
 				<Output embed={embed} />
 			</div>
