@@ -215,6 +215,8 @@ export default function Home() {
 			inline: field.inline
 		})),
 		image: image,
+		content: "",
+		autodelete: "",
 		thumbnail: thumbnail,
 		color: colorEnabled ? color : undefined,
 		footer: {
